@@ -9,7 +9,7 @@ and turns them into serverless functions.
 Run locally:
     cd api
     pip install -r requirements.txt
-    uvicorn index:app --reload --port 5000
+    uvicorn index:app --reload --port 8000
 """
 
 from fastapi import FastAPI
@@ -38,7 +38,7 @@ app.add_middleware(
 def health_check():
     """
     Simple endpoint to confirm the API is running.
-    Visit: http://localhost:5000/api/health
+    Visit: http://localhost:8000/api/health
     """
     return {
         "status": "ok",
