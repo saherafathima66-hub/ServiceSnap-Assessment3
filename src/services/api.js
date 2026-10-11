@@ -5,11 +5,11 @@
  * Each function returns parsed JSON data or throws an error.
  *
  * The API base URL comes from the VITE_API_URL environment variable.
- * In local dev:  http://localhost:5000
- * In production: https://your-backend.onrender.com
+ * In local dev:  http://localhost:8000
+ * In production: /api (relative — same domain on Vercel)
  */
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL = import.meta.env.VITE_API_URL || '/api'
 
 /**
  * Helper to make API requests with consistent headers and error handling.
