@@ -1,0 +1,189 @@
+/* =========================================
+   Toast Notification Styles
+   Adapted from 21st.dev for ServiceSnap.
+   Uses existing --color-* design tokens.
+   ========================================= */
+
+/* Sonner queue container — flex to end so toasts sit flush */
+.toast-queue {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ---- Card ---- */
+.toast-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 360px;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-gray-dark);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family);
+}
+
+/* Variant borders */
+.toast--success {
+  border-color: rgba(45, 159, 111, 0.5);
+}
+
+.toast--error {
+  border-color: rgba(230, 57, 70, 0.5);
+}
+
+.toast--warning {
+  border-color: rgba(244, 162, 97, 0.5);
+}
+
+/* ---- Body (icon + text) ---- */
+.toast-body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.toast-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-gray);
+}
+
+.toast-icon--success {
+  color: var(--color-success);
+}
+
+.toast-icon--error {
+  color: var(--color-error);
+}
+
+.toast-icon--warning {
+  color: var(--color-warning);
+}
+
+.toast-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toast-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-gray-dark);
+  margin: 0;
+}
+
+.toast-title--success {
+  color: var(--color-success);
+}
+
+.toast-title--error {
+  color: var(--color-error);
+}
+
+.toast-title--warning {
+  color: var(--color-warning);
+}
+
+.toast-title--highlight {
+  color: var(--color-success);
+}
+
+.toast-message {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ---- Actions ---- */
+.toast-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: var(--space-sm);
+}
+
+.toast-action-btn {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.toast-action-btn--success {
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.toast-action-btn--success:hover {
+  background: rgba(45, 159, 111, 0.1);
+}
+
+.toast-action-btn--error {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.toast-action-btn--error:hover {
+  background: rgba(230, 57, 70, 0.1);
+}
+
+.toast-action-btn--warning {
+  color: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.toast-action-btn--warning:hover {
+  background: rgba(244, 162, 97, 0.1);
+}
+
+.toast-action-btn--default {
+  color: var(--color-gray-dark);
+}
+
+.toast-action-btn--default:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ---- Dismiss button ---- */
+.toast-dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.toast-dismiss:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.toast-dismiss:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.toast-dismiss-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--color-gray);
+}

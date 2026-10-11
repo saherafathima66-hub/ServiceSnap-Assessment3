@@ -1,0 +1,109 @@
+/* UpcomingServicesScreen Styles */
+
+.upcoming-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.upcoming-header {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.upcoming-header .back-button {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-sm);
+}
+
+.upcoming-header .back-button:hover {
+  color: var(--color-white);
+}
+
+.upcoming-header h1 {
+  color: var(--color-white);
+  font-size: 1.375rem;
+  margin-bottom: var(--space-xs);
+}
+
+.upcoming-header p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8125rem;
+}
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-lg);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-white);
+}
+
+.filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-tab {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-tab:hover {
+  border-color: var(--color-teal);
+  color: var(--color-teal-dark);
+}
+
+.filter-tab.active {
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+/* Services list */
+.services-list {
+  flex: 1;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--color-gray-light);
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.empty-state h3 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-xs);
+}
+
+.empty-state p {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+}

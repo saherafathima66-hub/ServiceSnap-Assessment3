@@ -1,0 +1,84 @@
+/* AppButton Styles */
+
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Primary: Teal */
+.app-btn--primary {
+  background: var(--color-teal);
+  color: var(--color-white);
+  border-color: var(--color-teal);
+}
+
+.app-btn--primary:hover {
+  background: var(--color-teal-dark);
+  border-color: var(--color-teal-dark);
+}
+
+.app-btn--primary:active {
+  transform: scale(0.98);
+}
+
+/* Secondary: White/outline */
+.app-btn--secondary {
+  background: var(--color-white);
+  color: var(--color-navy);
+  border-color: var(--color-border);
+}
+
+.app-btn--secondary:hover {
+  border-color: var(--color-navy);
+  background: var(--color-gray-light);
+}
+
+.app-btn--secondary:active {
+  transform: scale(0.98);
+}
+
+/* Danger: Red */
+.app-btn--danger {
+  background: var(--color-error);
+  color: var(--color-white);
+  border-color: var(--color-error);
+}
+
+.app-btn--danger:hover {
+  background: #c0323d;
+  border-color: #c0323d;
+}
+
+.app-btn--danger:active {
+  transform: scale(0.98);
+}
+
+/* Full width modifier */
+.app-btn--full {
+  width: 100%;
+}
+
+/* Disabled modifier */
+.app-btn--disabled,
+.app-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Focus visible for keyboard navigation */
+.app-btn:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}

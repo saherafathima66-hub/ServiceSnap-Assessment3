@@ -1,0 +1,100 @@
+/* AddServiceScreen Styles */
+
+.add-service-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--color-gray-light);
+}
+
+.add-service-header {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.add-service-header .back-button {
+  margin-bottom: var(--space-sm);
+}
+
+.add-service-header h1 {
+  font-size: 1.375rem;
+  margin-bottom: var(--space-xs);
+}
+
+.add-service-header p {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+/* Form */
+.add-service-form {
+  flex: 1;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.form-select {
+  padding: var(--space-sm) var(--space-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: var(--color-gray-dark);
+  background: var(--color-white);
+  transition: border-color var(--transition-fast);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236B7280'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+}
+
+.form-select-error {
+  border-color: var(--color-error);
+}
+
+.field-error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+}
+
+/* Date/time row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.add-service-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}

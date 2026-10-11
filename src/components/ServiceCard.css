@@ -1,0 +1,79 @@
+/* ServiceCard Styles */
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-teal);
+}
+
+.service-card:active {
+  transform: scale(0.99);
+}
+
+/* Top row: title + badge */
+.service-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.service-card__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  flex: 1;
+  margin: 0;
+}
+
+/* Detail rows */
+.service-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.service-card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.service-card__icon {
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.service-card__text {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+/* Footer */
+.service-card__footer {
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-gray-light);
+  margin-top: var(--space-xs);
+}
+
+.service-card__cta {
+  font-size: 0.75rem;
+  color: var(--color-teal);
+  font-weight: 500;
+}

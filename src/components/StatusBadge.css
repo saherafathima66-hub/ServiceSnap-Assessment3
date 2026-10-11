@@ -1,0 +1,29 @@
+/* StatusBadge Styles */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-badge--upcoming {
+  background: rgba(46, 196, 182, 0.12);
+  color: var(--color-teal-dark);
+}
+
+.status-badge--completed {
+  background: rgba(45, 159, 111, 0.12);
+  color: var(--color-success);
+}
+
+.status-badge--reported {
+  background: rgba(244, 162, 97, 0.15);
+  color: #b87333;
+}

@@ -1,0 +1,65 @@
+/* FormField Styles */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-field__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.form-field__required {
+  color: var(--color-error);
+}
+
+.form-field__input,
+.form-field__textarea {
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: var(--color-gray-dark);
+  background: var(--color-white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+
+.form-field__input::placeholder,
+.form-field__textarea::placeholder {
+  color: var(--color-gray);
+  opacity: 0.6;
+}
+
+.form-field__input:focus,
+.form-field__textarea:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+}
+
+.form-field__textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Error state */
+.form-field--error .form-field__input,
+.form-field--error .form-field__textarea {
+  border-color: var(--color-error);
+}
+
+.form-field--error .form-field__input:focus,
+.form-field--error .form-field__textarea:focus {
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+.form-field__error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  font-weight: 500;
+}

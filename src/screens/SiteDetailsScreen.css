@@ -1,0 +1,72 @@
+/* SiteDetailsScreen Styles */
+
+.site-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--color-gray-light);
+}
+
+.site-header {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .back-button {
+  margin-bottom: var(--space-sm);
+}
+
+.site-header h1 {
+  font-size: 1.375rem;
+  margin-bottom: var(--space-xs);
+}
+
+.site-header p {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+/* Existing sites */
+.existing-sites {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.existing-sites h3 {
+  font-size: 0.875rem;
+  margin-bottom: var(--space-sm);
+  color: var(--color-navy);
+}
+
+.existing-sites-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.existing-site-chip {
+  font-size: 0.8125rem;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-gray-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-gray-dark);
+}
+
+/* Form */
+.site-form {
+  flex: 1;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.site-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}

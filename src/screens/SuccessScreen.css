@@ -1,0 +1,94 @@
+/* SuccessScreen Styles */
+
+.success-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: linear-gradient(170deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+  padding: var(--space-xl);
+  color: var(--color-white);
+}
+
+.success-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-lg);
+}
+
+.success-icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(46, 196, 182, 0.2);
+  border: 3px solid var(--color-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.success-icon {
+  font-size: 2.5rem;
+}
+
+.success-screen h1 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+.success-summary {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  max-width: 320px;
+  margin-top: var(--space-md);
+}
+
+.summary-note {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+
+/* Reference number card (shown after issue submission) */
+.success-ref {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(46, 196, 182, 0.4);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+  max-width: 320px;
+}
+
+.ref-label {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ref-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-teal);
+  margin-top: var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.success-actions {
+  padding-bottom: var(--space-lg);
+}

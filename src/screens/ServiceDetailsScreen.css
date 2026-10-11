@@ -1,0 +1,112 @@
+/* ServiceDetailsScreen Styles */
+
+.details-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--color-gray-light);
+}
+
+.details-header {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Not found state */
+.details-not-found {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  gap: var(--space-md);
+}
+
+.not-found-icon {
+  font-size: 3rem;
+}
+
+.details-not-found h2 {
+  font-size: 1.25rem;
+}
+
+.details-not-found p {
+  color: var(--color-gray);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Detail card */
+.details-card {
+  margin: var(--space-lg);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-lg);
+}
+
+.details-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.details-card-top h1 {
+  font-size: 1.25rem;
+  flex: 1;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 0.9375rem;
+  color: var(--color-gray-dark);
+}
+
+.detail-notes {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.detail-notes .detail-label {
+  margin-bottom: var(--space-xs);
+}
+
+.detail-notes p {
+  font-size: 0.9375rem;
+  color: var(--color-gray-dark);
+  line-height: 1.5;
+}
+
+/* Actions */
+.details-actions {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: auto;
+}

@@ -1,0 +1,29 @@
+/* PlaceholderSlot Styles — will be replaced by 21st.dev component */
+
+.placeholder-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(46, 196, 182, 0.04);
+  text-align: center;
+  gap: var(--space-xs);
+}
+
+.placeholder-slot__icon {
+  font-size: 1.5rem;
+}
+
+.placeholder-slot__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.placeholder-slot__hint {
+  font-size: 0.6875rem;
+  color: var(--color-gray);
+}
