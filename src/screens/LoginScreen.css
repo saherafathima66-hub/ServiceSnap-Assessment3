@@ -85,3 +85,15 @@
   max-width: 320px;
   margin: 0 auto;
 }
+
+/* General error message */
+.login-general-error {
+  background: rgba(230, 57, 70, 0.1);
+  color: var(--color-error);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  text-align: center;
+}

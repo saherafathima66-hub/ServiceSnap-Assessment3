@@ -7,7 +7,7 @@ import './LoginScreen.css'
 
 function LoginScreen() {
   const navigate = useNavigate()
-  const { setUser } = useApp()
+  const { loginUser } = useApp()
 
   const [email, setEmail] = useState('demo@servicesnap.nz')
   const [password, setPassword] = useState('demo1234')
@@ -33,23 +33,21 @@ function LoginScreen() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
 
     if (!validate()) return
 
     setIsLoggingIn(true)
 
-    // Simulate a brief login delay for realism
-    setTimeout(() => {
-      setUser({
-        name: 'Sam Taylor',
-        role: 'Site Manager',
-        email: email,
-      })
-      setIsLoggingIn(false)
+    try {
+      await loginUser(email, password)
       navigate('/dashboard')
-    }, 600)
+    } catch (err) {
+      setErrors({ general: 'Login failed. Please try again.' })
+    } finally {
+      setIsLoggingIn(false)
+    }
   }
 
   return (
@@ -73,6 +71,10 @@ function LoginScreen() {
         </div>
 
         <form className="login-form" onSubmit={handleLogin}>
+          {errors.general && (
+            <div className="login-general-error">{errors.general}</div>
+          )}
+
           <FormField
             label="Email"
             type="email"
