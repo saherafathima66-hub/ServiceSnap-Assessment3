@@ -4,7 +4,7 @@
 -- Run this SQL in the Supabase SQL Editor
 -- (https://supabase.com → your project → SQL Editor → New query)
 --
--- This creates 3 tables: profiles, sites, services, issues
+-- This creates 4 tables: profiles, sites, services, issues
 -- and enables Row Level Security so users can only see their own data.
 -- =============================================
 
@@ -28,7 +28,10 @@ CREATE TABLE IF NOT EXISTS sites (
     phone       TEXT NOT NULL,
     notes       TEXT,
     user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-    created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+    -- Composite unique constraint: enables the services table to enforce
+    -- that a service can only reference a site owned by the same user.
+    UNIQUE (id, user_id)
 );
 
 -- 3. SERVICES TABLE
@@ -37,26 +40,35 @@ CREATE TABLE IF NOT EXISTS services (
     id          SERIAL PRIMARY KEY,
     title       TEXT NOT NULL,
     provider    TEXT NOT NULL,
-    site_id     INTEGER NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+    site_id     INTEGER NOT NULL,
     date        DATE NOT NULL,
     time        TIME NOT NULL,
     status      TEXT NOT NULL DEFAULT 'upcoming'
                 CHECK (status IN ('upcoming', 'completed', 'reported')),
     notes       TEXT,
     user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-    created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+    -- Composite FK: ensures site_id references a site owned by the same user.
+    -- The (site_id, user_id) pair must match an existing (id, user_id) in sites.
+    FOREIGN KEY (site_id, user_id) REFERENCES sites(id, user_id) ON DELETE CASCADE,
+    -- Composite unique constraint: enables the issues table to enforce
+    -- that an issue can only reference a service owned by the same user.
+    UNIQUE (id, user_id)
 );
 
 -- 4. ISSUES TABLE
 -- Stores issue reports linked to services
 CREATE TABLE IF NOT EXISTS issues (
     id           SERIAL PRIMARY KEY,
-    service_id   INTEGER NOT NULL REFERENCES services(id) ON DELETE CASCADE,
+    service_id   INTEGER NOT NULL,
     issue_type   TEXT NOT NULL,
     description  TEXT NOT NULL,
     photo_url    TEXT,
     reported_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
-    user_id      UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE
+    user_id      UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    -- Composite FK: ensures service_id references a service owned by the same user.
+    -- The (service_id, user_id) pair must match an existing (id, user_id) in services.
+    FOREIGN KEY (service_id, user_id) REFERENCES services(id, user_id) ON DELETE CASCADE
 );
 
 -- =============================================
@@ -69,6 +81,17 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE sites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE issues ENABLE ROW LEVEL SECURITY;
+
+-- =============================================
+-- INDEXES
+-- =============================================
+-- Speed up RLS queries that filter by user_id on every request.
+
+CREATE INDEX IF NOT EXISTS idx_sites_user_id     ON sites(user_id);
+CREATE INDEX IF NOT EXISTS idx_services_user_id  ON services(user_id);
+CREATE INDEX IF NOT EXISTS idx_services_site_id  ON services(site_id);
+CREATE INDEX IF NOT EXISTS idx_issues_user_id    ON issues(user_id);
+CREATE INDEX IF NOT EXISTS idx_issues_service_id ON issues(service_id);
 
 -- PROFILES: users can read and update their own profile
 CREATE POLICY "Users can view own profile"
