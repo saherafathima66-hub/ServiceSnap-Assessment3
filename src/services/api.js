@@ -17,13 +17,12 @@ const API_URL = import.meta.env.VITE_API_URL || '/api'
 async function request(endpoint, options = {}) {
   const url = `${API_URL}${endpoint}`
 
-  // Get stored user ID for authentication header
-  const storedUser = localStorage.getItem('servicesnap_user')
-  const userId = storedUser ? JSON.parse(storedUser).id : null
+  // Get stored access token for authentication
+  const accessToken = localStorage.getItem('servicesnap_token')
 
   const headers = {
     'Content-Type': 'application/json',
-    ...(userId && { 'X-User-Id': userId }),
+    ...(accessToken && { 'Authorization': `Bearer ${accessToken}` }),
     ...options.headers,
   }
 
@@ -44,14 +43,14 @@ async function request(endpoint, options = {}) {
 // ── Auth ──────────────────────────────────────────────────────
 
 export async function login(email, password) {
-  return request('/api/auth/login', {
+  return request('/auth/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
   })
 }
 
 export async function signup(email, password, name, role) {
-  return request('/api/auth/signup', {
+  return request('/auth/signup', {
     method: 'POST',
     body: JSON.stringify({ email, password, name, role }),
   })
@@ -60,11 +59,11 @@ export async function signup(email, password, name, role) {
 // ── Services ──────────────────────────────────────────────────
 
 export async function getServices() {
-  return request('/api/services')
+  return request('/services')
 }
 
 export async function createService(serviceData) {
-  return request('/api/services', {
+  return request('/services', {
     method: 'POST',
     body: JSON.stringify(serviceData),
   })
@@ -73,11 +72,11 @@ export async function createService(serviceData) {
 // ── Sites ─────────────────────────────────────────────────────
 
 export async function getSites() {
-  return request('/api/sites')
+  return request('/sites')
 }
 
 export async function createSite(siteData) {
-  return request('/api/sites', {
+  return request('/sites', {
     method: 'POST',
     body: JSON.stringify(siteData),
   })
@@ -86,11 +85,11 @@ export async function createSite(siteData) {
 // ── Issues ────────────────────────────────────────────────────
 
 export async function getIssues() {
-  return request('/api/issues')
+  return request('/issues')
 }
 
 export async function createIssue(issueData) {
-  return request('/api/issues', {
+  return request('/issues', {
     method: 'POST',
     body: JSON.stringify(issueData),
   })

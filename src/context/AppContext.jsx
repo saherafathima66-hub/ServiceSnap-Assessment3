@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useCallback, useMemo, useEffect } from 'react'
 import { sampleServices, sampleSites } from '../data/sampleData'
 import * as api from '../services/api'
+import { supabase } from '../services/supabase'
 
 // Create the context
 const AppContext = createContext(null)
@@ -121,35 +122,57 @@ function AppProvider({ children, toasterRef }) {
     }
   }, [useBackend])
 
-  // Login via backend (falls back to demo mode)
+  // Login via Supabase Auth (falls back to demo mode if not configured)
   const loginUser = useCallback(async (email, password) => {
-    try {
-      const result = await api.login(email, password)
-      setUser(result.user)
-      localStorage.setItem('servicesnap_user', JSON.stringify(result.user))
-      return result
-    } catch (err) {
-      console.warn('Backend login failed, using demo login:', err.message)
-      const demoUser = {
-        id: 'demo-user-001',
-        name: 'Sam Taylor',
-        role: 'Site Manager',
-        email: email,
+    // Try Supabase Auth first
+    if (supabase) {
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        })
+        if (error) throw error
+
+        const userData = {
+          id: data.user.id,
+          name: data.user.user_metadata?.name || email.split('@')[0],
+          role: data.user.user_metadata?.role || 'Site Manager',
+          email: data.user.email,
+        }
+        setUser(userData)
+        localStorage.setItem('servicesnap_user', JSON.stringify(userData))
+        localStorage.setItem('servicesnap_token', data.session.access_token)
+        return { user: userData }
+      } catch (err) {
+        console.warn('Supabase login failed, using demo login:', err.message)
       }
-      setUser(demoUser)
-      localStorage.setItem('servicesnap_user', JSON.stringify(demoUser))
-      return { user: demoUser }
     }
+
+    // Fallback: demo mode (no Supabase configured or login failed)
+    const demoUser = {
+      id: 'demo-user-001',
+      name: 'Sam Taylor',
+      role: 'Site Manager',
+      email: email,
+    }
+    setUser(demoUser)
+    localStorage.setItem('servicesnap_user', JSON.stringify(demoUser))
+    localStorage.removeItem('servicesnap_token')
+    return { user: demoUser }
   }, [])
 
   // Logout — clear all state
   const logoutUser = useCallback(() => {
+    if (supabase) {
+      supabase.auth.signOut()
+    }
     setUser(null)
     setServices(sampleServices)
     setSites(sampleSites)
     setIssues([])
     setUseBackend(false)
     localStorage.removeItem('servicesnap_user')
+    localStorage.removeItem('servicesnap_token')
   }, [])
 
   // Show toast notification via the Toaster ref
