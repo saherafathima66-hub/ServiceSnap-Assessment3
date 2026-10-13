@@ -49,7 +49,7 @@ function WelcomeScreen() {
           fullWidth
         />
         <p className="welcome-demo-note">
-          This is a demo application. No real data is collected or stored.
+          Simple service management for site managers.
         </p>
       </div>
     </div>

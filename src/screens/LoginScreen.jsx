@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import AppButton from '../components/AppButton'
 import FormField from '../components/FormField'
@@ -9,8 +9,8 @@ function LoginScreen() {
   const navigate = useNavigate()
   const { loginUser } = useApp()
 
-  const [email, setEmail] = useState('demo@servicesnap.nz')
-  const [password, setPassword] = useState('demo1234')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({})
   const [isLoggingIn, setIsLoggingIn] = useState(false)
 
@@ -44,7 +44,7 @@ function LoginScreen() {
       await loginUser(email, password)
       navigate('/dashboard')
     } catch (err) {
-      setErrors({ general: 'Login failed. Please try again.' })
+      setErrors({ general: err.message || 'Login failed. Please try again.' })
     } finally {
       setIsLoggingIn(false)
     }
@@ -64,12 +64,6 @@ function LoginScreen() {
           <p>Sign in to manage your services</p>
         </div>
 
-        {/* Demo mode badge */}
-        <div className="demo-badge">
-          <span className="demo-badge-icon">🧪</span>
-          <span>Demo Mode — Pre-filled credentials</span>
-        </div>
-
         <form className="login-form" onSubmit={handleLogin}>
           {errors.general && (
             <div className="login-general-error">{errors.general}</div>
@@ -82,6 +76,7 @@ function LoginScreen() {
             onChange={(e) => setEmail(e.target.value)}
             error={errors.email}
             placeholder="your@email.com"
+            required
           />
 
           <FormField
@@ -91,6 +86,7 @@ function LoginScreen() {
             onChange={(e) => setPassword(e.target.value)}
             error={errors.password}
             placeholder="Enter your password"
+            required
           />
 
           <AppButton
@@ -103,8 +99,10 @@ function LoginScreen() {
         </form>
 
         <p className="login-note">
-          This is a simulated demo login. No real credentials are collected
-          or stored. The pre-filled details let you explore the app.
+          Don't have an account?{' '}
+          <Link to="/signup" style={{ color: 'var(--color-teal)', fontWeight: 600 }}>
+            Create one
+          </Link>
         </p>
       </div>
     </div>

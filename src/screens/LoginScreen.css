@@ -51,25 +51,6 @@
   font-size: 0.9375rem;
 }
 
-/* Demo badge */
-.demo-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
-  background: rgba(46, 196, 182, 0.1);
-  border: 1px solid rgba(46, 196, 182, 0.3);
-  border-radius: var(--radius-md);
-  font-size: 0.8125rem;
-  color: var(--color-teal-dark);
-  font-weight: 500;
-}
-
-.demo-badge-icon {
-  font-size: 1rem;
-}
-
 /* Form */
 .login-form {
   display: flex;
@@ -95,5 +76,32 @@
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-sm);
   border: 1px solid rgba(230, 57, 70, 0.3);
+  text-align: center;
+}
+
+/* Signup success message */
+.signup-success {
+  background: rgba(45, 159, 111, 0.1);
+  color: var(--color-success);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(45, 159, 111, 0.3);
+  text-align: center;
+}
+
+/* Resend confirmation section */
+.resend-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.resend-hint {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
   text-align: center;
 }

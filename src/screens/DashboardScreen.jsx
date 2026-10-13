@@ -6,7 +6,7 @@ import './DashboardScreen.css'
 
 function DashboardScreen() {
   const navigate = useNavigate()
-  const { user, services, sites } = useApp()
+  const { user, services, sites, logoutUser } = useApp()
 
   // Compute quick stats
   const upcomingCount = services.filter((s) => s.status === 'upcoming').length
@@ -26,9 +26,12 @@ function DashboardScreen() {
           <h1>Welcome back, {user?.name || 'Manager'} 👋</h1>
           <p>{user?.role || 'Site Manager'}</p>
         </div>
-        <div className="data-notice">
-          Demo only — data resets on refresh
-        </div>
+        <button
+          className="logout-btn"
+          onClick={() => { logoutUser(); navigate('/'); }}
+        >
+          Sign Out
+        </button>
       </div>
 
       {/* Quick Stats */}

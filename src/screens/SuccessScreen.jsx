@@ -42,8 +42,7 @@ function SuccessScreen() {
         {/* Summary card */}
         <div className="success-summary">
           <p className="summary-note">
-            ℹ️ This is a demo application. Data is stored temporarily in your
-            browser session and will reset if you refresh the page.
+            ℹ️ Your data is saved securely and will be available each time you sign in.
           </p>
         </div>
       </div>

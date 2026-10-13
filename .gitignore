@@ -16,7 +16,8 @@ dist-ssr
 .env
 .env.local
 .env.*.local
-
+.env.*
+!.env.example
 # Python backend
 backend/__pycache__/
 backend/venv/
